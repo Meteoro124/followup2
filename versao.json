@@ -1,0 +1,188 @@
+{
+ "pagina": "Follow-up de NF · Almoxarifado 3001",
+ "versao": "2026-11-23 23:01",
+ "assinatura": "a3c96129d026",
+ "arquivos": [
+  {
+   "caminho": "index.html",
+   "bytes": 7598,
+   "sha256": "3e6c7c1dec43738be9893a7b81803d766c7aec5fcdd54391ba00043781ab364c"
+  },
+  {
+   "caminho": "estilo/componentes.css",
+   "bytes": 15594,
+   "sha256": "22680159e0fc585804baa575e7d9892bce7ab73416972929cfe750ff5191de21"
+  },
+  {
+   "caminho": "estilo/estrutura.css",
+   "bytes": 7316,
+   "sha256": "d2aaa878e8c717db56f43b5b6686480b683a21758e35c9c67fbeb9e7b67ee0dd"
+  },
+  {
+   "caminho": "estilo/painel.css",
+   "bytes": 9546,
+   "sha256": "0b3a3940c3dee4eb5c6ca0e76cc6d5e5d779241a4136d66c51fa52cb599413bb"
+  },
+  {
+   "caminho": "estilo/tokens.css",
+   "bytes": 3915,
+   "sha256": "035bad1f9266b94d4ae863a7f631a153663389db5eedb7fce9747d302df6fabf"
+  },
+  {
+   "caminho": "img/logo-alvorada.png",
+   "bytes": 17450,
+   "sha256": "80298e315b2995bf71aedc17d747174bfead134e14bd2a8e18314bfee3435f77"
+  },
+  {
+   "caminho": "js/app.js",
+   "bytes": 8327,
+   "sha256": "3121804b855a33814d807cbef1cb613f8ecd9bd02a048de334c3cb057d020daa"
+  },
+  {
+   "caminho": "js/tema.js",
+   "bytes": 1562,
+   "sha256": "7137454df5b09bbe2e4c5d5ab7f578f279901ce66076d55929971a20cf280e13"
+  },
+  {
+   "caminho": "js/logica/arquivos.js",
+   "bytes": 9713,
+   "sha256": "5d60ee2da1097667925c13e209f0d428e8c6310d56bc2470b7c3fd91eebfffa1"
+  },
+  {
+   "caminho": "js/logica/basico.js",
+   "bytes": 10733,
+   "sha256": "fc9707960fae089094bd01762a9633b2efa3a9e0d0614c21eb13547d53e08f17"
+  },
+  {
+   "caminho": "js/logica/demo.js",
+   "bytes": 26300,
+   "sha256": "fa37720ddae8e4da037b7ee46452e30c06c3b806c5c22d41feb9d076df402f63"
+  },
+  {
+   "caminho": "js/logica/fontes.js",
+   "bytes": 18914,
+   "sha256": "76323776d55009b6d250bdb91983923c3f0f46a33acba8b9325d711b6efab4b6"
+  },
+  {
+   "caminho": "js/logica/index.js",
+   "bytes": 1443,
+   "sha256": "e25aed685f8b8250b74894bb0e5222b02ad9702ee544dd67854a3a327ce94258"
+  },
+  {
+   "caminho": "js/logica/referencia.js",
+   "bytes": 4167,
+   "sha256": "c0b8cc9002c03a68c8c79cd3a92d556b3217dcd2014dd915a64923dc5762105b"
+  },
+  {
+   "caminho": "js/nucleo/acompanhamento.js",
+   "bytes": 13130,
+   "sha256": "5bcc2084c4c6a018ae242ba2a3afc77e1eb681edbcb11276461f38b79f9d4a33"
+  },
+  {
+   "caminho": "js/nucleo/banco.js",
+   "bytes": 6172,
+   "sha256": "6be6b58dcc1b6d58d718c68a85edb56c122d8ebd2edc1e141d819068da2aebcc"
+  },
+  {
+   "caminho": "js/nucleo/dom.js",
+   "bytes": 7809,
+   "sha256": "5c1febf092faa7a60d196cc08029e007c2e483054a66fca91ec649fa349cccb1"
+  },
+  {
+   "caminho": "js/nucleo/estado.js",
+   "bytes": 1565,
+   "sha256": "7a29f3e2e28f9cfd8c09a29d8b278f20418b4268e432359330cd0e3f00bc9fb2"
+  },
+  {
+   "caminho": "js/nucleo/formato.js",
+   "bytes": 10777,
+   "sha256": "463e9535eeb3bb2e5b9b4bb93b0a2a4f2300f7ac450723d59165e3f4303d8a04"
+  },
+  {
+   "caminho": "js/nucleo/periodo.js",
+   "bytes": 1478,
+   "sha256": "42d18e0e6a1dbcdd92b104f6beb01ade0421e631a932bed17b80c53e63eafa5c"
+  },
+  {
+   "caminho": "js/paginas/busca.js",
+   "bytes": 8239,
+   "sha256": "77a98f13408c47227a7f9c61674e4ca04a391288d08f17f82b01fd168ade86e0"
+  },
+  {
+   "caminho": "js/paginas/config.js",
+   "bytes": 32618,
+   "sha256": "fbb2712065c15c5ad7e25a0fb545912d20ea9647e5ce4726de20263ba3c85ba6"
+  },
+  {
+   "caminho": "js/paginas/consulta-sql.js",
+   "bytes": 8964,
+   "sha256": "5d2bba7a9316930ab59c1c09c5d4c0451654033cd69f4144a08faa6e976a076b"
+  },
+  {
+   "caminho": "js/paginas/detalhe.js",
+   "bytes": 28753,
+   "sha256": "1dbfe6a4492053a5ea3e09d4b2acb6acec018bcb9398063dca8cce617e43fcd2"
+  },
+  {
+   "caminho": "js/paginas/etapas.js",
+   "bytes": 12036,
+   "sha256": "6b0b3f681ba3fba346e736cef2c46c809d8d78a748ab1a842e422e5b0d05a281"
+  },
+  {
+   "caminho": "js/paginas/importar.js",
+   "bytes": 18799,
+   "sha256": "d418ba36850b1d34ba82b3fd32b59985c0c435f394502d34b9e7a09780f039c0"
+  },
+  {
+   "caminho": "js/paginas/indicadores.js",
+   "bytes": 16585,
+   "sha256": "f6861b40e45c01fe59684f5cb12f8c9532ad088a62bb58ce236edf922b03c5fb"
+  },
+  {
+   "caminho": "js/paginas/painel.js",
+   "bytes": 23465,
+   "sha256": "201b0798e1cd8fb2ee7755874ab3167503908b1eedaa657ad24bae168f43fd4b"
+  },
+  {
+   "caminho": "js/paginas/pendencias.js",
+   "bytes": 10338,
+   "sha256": "691b552c46ec64720219dd7a4748a70bb9e931703482d3795b2f1d49b227cfeb"
+  },
+  {
+   "caminho": "js/sql/config-padrao.js",
+   "bytes": 1940,
+   "sha256": "8b731d24f433c6c2f4dcf30ca64620cc0e0ce81215ea717103bf012e381fbf84"
+  },
+  {
+   "caminho": "js/sql/descricoes.js",
+   "bytes": 3907,
+   "sha256": "9d279567aba1d85ece468464e7986949773bbf0024326c996572f9a5d35ab5be"
+  },
+  {
+   "caminho": "js/sql/index.js",
+   "bytes": 549,
+   "sha256": "3a9eb33c742147db3a4e28882844f914d7e2af34523c7998aff79c21aa784d24"
+  },
+  {
+   "caminho": "js/sql/modelo.js",
+   "bytes": 36974,
+   "sha256": "2028d5f3094cbfb610eeaf296f50a01effc738e52cfc8c6b3e7f18bbf5621e17"
+  },
+  {
+   "caminho": "js/sql/util.js",
+   "bytes": 1078,
+   "sha256": "4c60ba3ac5602ede93bde9feb4bb734a97a2a4684beb9bfc9299ac83c9436cc0"
+  },
+  {
+   "caminho": "js/sql/verificacoes.js",
+   "bytes": 5510,
+   "sha256": "fb6c931b4ed699ef317221a6ab76c407f3f020aeecf644d0434c9913b4056400"
+  }
+ ],
+ "teste": {
+  "passos": 49,
+  "falhas": 0,
+  "erros_do_navegador": 0
+ },
+ "conferencia": "sem CNPJ, raiz de CNPJ ou nome da lista \"Fora do escopo\" no código"
+}

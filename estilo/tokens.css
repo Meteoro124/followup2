@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/* ==========================================================================
+   IDENTIDADE VISUAL · Alvorada Bioenergia
+   Para mudar as cores, edite só os dois blocos de tokens abaixo:
+   :root = tema claro · :root[data-theme="dark"] = tema escuro.
+   Cores da marca: verde-escuro #066B3A (ALVORADA), verde-claro #7ED957
+   (BIOENERGIA), dourado #D4A017 (triângulo) e verde-floresta das peças escuras.
+   ========================================================================== */
+:root {
+  color-scheme: light;
+  /* marca */
+  --marca-escuro: #066B3A; --marca-claro: #7ED957; --marca-dourado: #D4A017; --marca-floresta: #0B3D22;
+  /* faixa do cabeçalho (igual nos dois temas) */
+  --faixa-1: #08301B; --faixa-2: #066B3A; --faixa-texto: #FFFFFF; --faixa-texto-2: #7ED957; --faixa-borda: rgba(255,255,255,0.18);
+  /* superfícies e texto */
+  --page: #EEF3EE; --surface: #FFFFFF; --surface-2: #EAF1E8; --input-bg: #FFFFFF;
+  --ink: #0F2418; --ink-2: #3F5547; --muted: #74877A;
+  --grid: #DCE6DA; --axis: #B5C6B8; --border: rgba(6,60,30,0.13);
+  /* destaque (botões, aba ativa, links) */
+  --accent: #066B3A; --accent-ink: #04532C; --accent-wash: #E3F3E1; --accent-line: #A9D9A0; --on-accent: #FFFFFF;
+  /* estados */
+  --good: #1F8F3A; --good-ink: #1F6B2F; --warning: #E0A100; --serious: #E07A3F; --critical: #C8372D; --on-critical: #FFFFFF;
+  /* etapas (claro → escuro = início → fim) */
+  --st1: #B5E39E; --st2: #6CC456; --st3: #2E8F45; --st4: #066B3A;
+  /* fundos de aviso: fundo / borda / texto */
+  --vermelho-bg: #FCEBEA; --vermelho-borda: #F1B9B4; --vermelho-tx: #8C2A22;
+  --laranja-bg: #FDF0E6; --laranja-borda: #F3C6A5; --laranja-tx: #8A4317;
+  --amarelo-bg: #FFF5D9; --amarelo-borda: #EFCF7E; --amarelo-tx: #6B4E00;
+  --verde-bg: #E7F5E4; --verde-borda: #A9D9A0; --verde-tx: #1F6B2F;
+  /* mapa de calor (pendências) */
+  --heat-1: #DDF2D3; --heat-2: #B5E39E; --heat-3: #7ED957; --heat-4: #3FA34D; --heat-5: #1C7C3E; --heat-6: #066B3A; --heat-tx-forte: #FFFFFF;
+  /* camadas */
+  --overlay: rgba(8,30,18,0.45); --ocupado: rgba(243,246,242,0.78); --sombra: 0 20px 60px rgba(8,30,18,0.25); --sombra-toast: 0 8px 24px rgba(8,30,18,0.2);
+  /* estrutura no visual do "dashboard 1": barra lateral, item ativo verde-claro, gráficos */
+  --lateral: #FFFFFF; --lateral-ativo: #7ED957; --lateral-ativo-tx: #08190F; --topo-fundo: rgba(238,243,238,0.86);
+  --d1: #CFEFC0; --d2: #8FD970; --d3: #4FB04A; --d4: #1F8A3E; --d5: #066B3A;
+  --graf-1: #2E8F45; --graf-2: #D4A017;
+  --radius: 14px;
+  --fonte: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0A0F0C; --surface: #151B17; --surface-2: #1C241F; --input-bg: #101612;
+  --ink: #E9F1EB; --ink-2: #B3C3B8; --muted: #7F9487;
+  --grid: #26302A; --axis: #3D4C43; --border: rgba(126,217,87,0.11);
+  --lateral: #101512; --topo-fundo: rgba(10,15,12,0.86);
+  --d1: #ECF9E2; --d2: #B8F09A; --d3: #7ED957; --d4: #4E9B4A; --d5: #2B6236;
+  --graf-1: #7ED957; --graf-2: #E2B53A;
+  --accent: #7ED957; --accent-ink: #9BE57A; --accent-wash: #173A23; --accent-line: #2F6E3A; --on-accent: #08190F;
+  --good: #6FD36A; --good-ink: #A8E6A0; --warning: #F2B630; --serious: #F08A4F; --critical: #F06A5E; --on-critical: #1A0705;
+  --st1: #2F5E3B; --st2: #4E9B4A; --st3: #7ED957; --st4: #C6F0A8;
+  --vermelho-bg: #3A1715; --vermelho-borda: #7A2E28; --vermelho-tx: #FFB4AC;
+  --laranja-bg: #3A2312; --laranja-borda: #7A4A26; --laranja-tx: #FFC59A;
+  --amarelo-bg: #362C0E; --amarelo-borda: #7A6420; --amarelo-tx: #F7D77A;
+  --verde-bg: #16381F; --verde-borda: #2F6E3A; --verde-tx: #A8E6A0;
+  --heat-1: #173A23; --heat-2: #1F5130; --heat-3: #2E7A3F; --heat-4: #4E9B4A; --heat-5: #7ED957; --heat-6: #B8F09A; --heat-tx-forte: #08190F;
+  --overlay: rgba(0,0,0,0.6); --ocupado: rgba(10,15,12,0.8); --sombra: 0 20px 60px rgba(0,0,0,0.5); --sombra-toast: 0 8px 24px rgba(0,0,0,0.45);
+}

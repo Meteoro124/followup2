@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Follow-up de NF – Almoxarifado 3001 (protótipo A)</title>
+<!-- Cores dos temas claro e escuro: estilo/tokens.css -->
+<link rel="stylesheet" href="estilo/tokens.css">
+<link rel="stylesheet" href="estilo/estrutura.css">
+<link rel="stylesheet" href="estilo/componentes.css">
+<link rel="stylesheet" href="estilo/painel.css">
+<script src="js/tema.js"></script>
+<script defer src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" onerror="window.__xlsxFalhou = true"></script>
+<script type="module" src="js/app.js"></script>
+</head>
+<body>
+<div id="barraCarga" class="barra-carga" hidden role="progressbar" aria-label="Carregando"><span></span></div>
+<div class="app">
+<aside class="lateral">
+  <div class="lat-marca"><span class="logo"><img src="img/logo-alvorada.png" alt="Alvorada Bioenergia"></span></div>
+  <div class="lat-titulo"><b>Follow-up de notas fiscais</b><span>Almoxarifado · centro 3001</span></div>
+  <nav class="abas" id="abas" role="tablist" aria-label="Menu">
+    <div class="lat-grupo">Painéis</div>
+    <button data-aba="painel" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Painel</button>
+    <!-- Abas das etapas: escondidas; aparecem só ao clicar numa etapa da trilha -->
+    <button data-aba="pedido" class="subitem" aria-selected="false" hidden>Pedido</button>
+    <button data-aba="coleta" class="subitem" aria-selected="false" hidden>Coleta</button>
+    <button data-aba="entregue" class="subitem" aria-selected="false" hidden>Entregue</button>
+    <button data-aba="lancado" class="subitem" aria-selected="false" hidden>Lançado</button>
+    <button data-aba="indicadores" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><rect x="5" y="11" width="3" height="7" rx="1"/><rect x="10.5" y="5" width="3" height="13" rx="1"/><rect x="16" y="14" width="3" height="4" rx="1"/></svg>Indicadores</button>
+    <button data-aba="busca" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Buscar</button>
+    <button data-aba="pendencias" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Pendências<span id="contHoje" class="contador" hidden></span></button>
+    <div class="lat-grupo">Dados</div>
+    <button data-aba="importar" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3m0 0-4 4m4-4 4 4"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>Importar dados</button>
+    <button data-aba="sql" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Consulta SQL</button>
+    <button data-aba="config" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg>Configurações<span id="contConfig" class="contador" hidden></span></button>
+  </nav>
+  <div class="lat-rodape">
+    <span id="pillStatus" class="pill carregando"><span class="dot"></span><span id="pillTexto">Carregando o banco de dados…</span></span>
+    <span id="pillDemo" class="pill demo" hidden><span>Contém dados fictícios</span></span>
+    <span class="assin"><i></i>Alvorada Bioenergia · protótipo A</span>
+  </div>
+</aside>
+<div class="conteudo">
+<header class="topo">
+  <span class="migalha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg><span>Follow-up de NF</span><span aria-hidden="true">/</span><b id="migalhaAtual">Painel</b></span>
+  <label class="topo-busca" title="Pedido, número da nota ou do CT-e, chave de 44 dígitos, coleta ou nome do fornecedor. Enter para buscar; a tecla / leva até aqui."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="buscaRapida" type="search" placeholder="Buscar pedido, nota, chave, coleta ou fornecedor…" aria-label="Busca rápida"><kbd>/</kbd></label>
+  <label class="filtro-escopo" id="filtroEscopoBox" title="Quais notas entram no painel, nas etapas, nas pendências e na consulta SQL. A busca sempre acha todas.">Notas:
+    <select id="filtroEscopo">
+      <option value="no">Em acompanhamento</option>
+      <option value="fora">Só fora do escopo</option>
+      <option value="canceladas">Só canceladas ou recusadas</option>
+      <option value="arquivadas">Só o backlog arquivado</option>
+      <option value="todas">Todas as notas</option>
+    </select>
+  </label>
+  <button type="button" id="btnRecarregar" class="btn-icone" title="Atualizar esta página com os dados atuais" aria-label="Atualizar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg></button>
+  <button type="button" id="btnTema" class="btn-tema" title="Alternar entre automático, claro e escuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg><span id="btnTemaRot">automático</span></button>
+</header>
+<main>
+  <section id="aba-painel" class="aba"></section>
+  <section id="aba-indicadores" class="aba" hidden></section>
+  <section id="aba-pedido" class="aba" hidden></section>
+  <section id="aba-coleta" class="aba" hidden></section>
+  <section id="aba-entregue" class="aba" hidden></section>
+  <section id="aba-lancado" class="aba" hidden></section>
+  <section id="aba-busca" class="aba" hidden></section>
+  <section id="aba-pendencias" class="aba" hidden></section>
+  <section id="aba-importar" class="aba" hidden></section>
+  <section id="aba-sql" class="aba" hidden></section>
+  <section id="aba-config" class="aba" hidden></section>
+</main>
+</div>
+</div>
+<div id="modal" class="modal" hidden><div class="modal-box" id="modalBox"></div></div>
+<div id="toast" aria-live="polite"></div>
+<div id="ocupado" hidden><div class="spinner"></div><div id="ocupadoMsg"></div></div>
+</body>
+</html>

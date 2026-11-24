@@ -1,0 +1,107 @@
+@charset "UTF-8";
+/* ==========================================================================
+   PAINEL (página inicial) e INDICADORES, no visual do "dashboard 1".
+   Página inicial enxuta: cartões só com título e número; a explicação de cada
+   quadro fica no "i" ao lado do título (aparece ao passar o mouse).
+   ========================================================================== */
+.painel-cab { display: flex; align-items: flex-end; gap: 12px 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.painel-cab h1 { font-size: 24px; font-weight: 700; margin: 0; letter-spacing: -.01em; }
+.painel-cab .atualizado { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); }
+.painel-grade { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+.painel-lateral { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 16px; }
+@media (max-width: 1200px) { .painel-grade { grid-template-columns: minmax(0, 1fr); } .painel-lateral { position: static; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); align-items: start; } }
+
+/* título de quadro com o "i" da explicação */
+.titulo-cartao { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.titulo-cartao h3 { font-size: 17px; font-weight: 600; margin: 0; }
+.ajuda { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; flex: none; border-radius: 50%;
+  border: 1px solid var(--axis); color: var(--muted); font-size: 11px; font-weight: 700; font-style: italic; font-family: Georgia, serif; cursor: help; user-select: none; }
+.ajuda:hover { color: var(--ink); border-color: var(--ink-2); }
+.contagem { display: inline-block; min-width: 22px; padding: 1px 7px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border);
+  font-size: 12px; font-weight: 700; text-align: center; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+/* cartões grandes: título e número */
+.kpis-grandes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 1100px) { .kpis-grandes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .kpis-grandes { grid-template-columns: minmax(0, 1fr); } }
+.kpi-g { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; min-height: 112px; }
+.kpi-g[role=button] { cursor: pointer; }
+.kpi-g[role=button]:hover { border-color: var(--axis); }
+.kpi-g .rot { font-size: 13.5px; color: var(--ink-2); font-weight: 500; }
+.kpi-g .val { font-size: 32px; font-weight: 800; letter-spacing: -.02em; margin-top: 8px; font-variant-numeric: tabular-nums; line-height: 1.15; }
+.kpi-g.critico .val { color: var(--critical); }
+.kpi-g .barra { height: 5px; background: var(--grid); border-radius: 3px; margin-top: 12px; overflow: hidden; }
+.kpi-g .barra span { display: block; height: 100%; border-radius: 3px; background: var(--graf-1); }
+.kpi-g .medidor { position: absolute; right: 14px; bottom: 12px; width: 92px; height: 54px; pointer-events: none; }
+.kpi-g .medidor .trilho-m { stroke: var(--grid); }
+.kpi-g .medidor .valor-m { stroke: var(--graf-1); }
+.kpi-g .medidor .ponteiro { stroke: var(--ink-2); }
+
+/* trilha do pedido (rosca) e gráfico semanal */
+.linha-graficos { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 14px; }
+@media (max-width: 1100px) { .linha-graficos { grid-template-columns: minmax(0, 1fr); } }
+.rosca-bloco { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 18px; align-items: center; margin-top: 12px; }
+@media (max-width: 640px) { .rosca-bloco { grid-template-columns: minmax(0, 1fr); justify-items: center; } }
+.rosca { position: relative; width: 170px; height: 170px; }
+.rosca svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.rosca svg circle { transition: stroke-width .15s; }
+.rosca svg circle.fatia { cursor: pointer; }
+.rosca svg circle.fatia:hover { stroke-width: 30; }
+.rosca .centro { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; pointer-events: none; }
+.rosca .centro b { font-size: 30px; font-weight: 800; line-height: 1.1; }
+.rosca .centro span { font-size: 12px; color: var(--muted); max-width: 110px; }
+.legenda-etapas { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; width: 100%; min-width: 0; }
+.legenda-etapas li { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 10px; align-items: center; padding: 7px 10px; border-radius: 10px; cursor: pointer; }
+.legenda-etapas li:hover, .legenda-etapas li:focus-visible { background: var(--surface-2); }
+.legenda-etapas .nm { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink); font-weight: 600; min-width: 0; }
+.legenda-etapas .nm i { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.legenda-etapas .v { font-size: 19px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.grafico-area svg { width: 100%; height: 215px; display: block; overflow: visible; }
+.grafico-area .grade { stroke: var(--grid); stroke-dasharray: 3 4; }
+.grafico-area .l1 { stroke: var(--graf-1); } .grafico-area .l2 { stroke: var(--graf-2); }
+.grafico-area rect.alvo:hover { fill: var(--accent-wash); fill-opacity: .5; }
+.eixo-x { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.legenda-linha { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); margin: 4px 0 10px; }
+.legenda-linha i { display: inline-block; width: 14px; height: 4px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+
+/* coluna da direita: avisos e ações para hoje */
+.painel-lateral .card { padding: 18px; }
+.secao-lat + .secao-lat { border-top: 1px solid var(--grid); margin-top: 16px; padding-top: 16px; }
+.secao-lat .titulo-cartao { margin-bottom: 8px; }
+.lista-avisos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.lista-avisos li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; padding: 7px 8px; border-radius: 12px; cursor: pointer; align-items: center; }
+.lista-avisos li:hover, .lista-avisos li:focus-visible { background: var(--surface-2); }
+.lista-avisos .ico { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.lista-avisos .ico svg { width: 15px; height: 15px; }
+.lista-avisos .tx { font-size: 13px; font-weight: 600; color: var(--ink); }
+.ico.vermelho { background: var(--vermelho-bg); color: var(--critical); }
+.ico.laranja { background: var(--laranja-bg); color: var(--serious); }
+.ico.amarelo { background: var(--amarelo-bg); color: var(--amarelo-tx); }
+.ico.verde { background: var(--verde-bg); color: var(--good); }
+.lista-avisos li.max { background: var(--critical); box-shadow: 0 0 0 4px var(--vermelho-bg); margin: 4px 0; }
+.lista-avisos li.max .tx { color: var(--on-critical); }
+.lista-avisos li.max .ico { background: rgba(255,255,255,0.22); color: var(--on-critical); }
+.linha-tempo { list-style: none; margin: 0; padding: 0; }
+.linha-tempo li { position: relative; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; padding: 0 0 14px; cursor: pointer; }
+.linha-tempo li::before { content: ''; position: absolute; left: 10px; top: 24px; bottom: 2px; width: 2px; background: var(--grid); }
+.linha-tempo li:last-child { padding-bottom: 4px; } .linha-tempo li:last-child::before { display: none; }
+.linha-tempo li:hover .tx { color: var(--accent); }
+.linha-tempo .pt { width: 22px; height: 22px; border-radius: 50%; background: var(--accent-wash); border: 2px solid var(--accent); }
+.linha-tempo .pt.atrasada { border-color: var(--critical); background: var(--vermelho-bg); }
+.linha-tempo .tx { font-size: 13px; font-weight: 600; overflow-wrap: anywhere; }
+.linha-tempo .sb { font-size: 11.5px; color: var(--muted); }
+
+/* Configurações: lista da qualidade dos dados em duas colunas na tela larga */
+@media (min-width: 1100px) { .qualidade > ul { columns: 2; column-gap: 28px; } .qualidade > ul li { break-inside: avoid; } }
+
+/* cartão verde "Base de dados" (aba Importar dados) */
+.cartao-cta { border-radius: var(--radius); padding: 18px 20px; color: #FFFFFF; border: 1px solid rgba(126,217,87,0.28);
+  background: radial-gradient(120% 90% at 85% 0%, #3FA34D 0%, #0B3D22 55%, #08190F 100%); }
+.cartao-cta .selo { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.28); border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; }
+.cartao-cta .selo i { width: 12px; height: 6px; background: var(--marca-dourado); transform: skewX(-24deg); display: inline-block; }
+.cartao-cta .grande { font-size: 34px; font-weight: 800; margin: 12px 0 0; line-height: 1.1; }
+.cartao-cta p { margin: 4px 0 0; font-size: 13px; color: rgba(255,255,255,0.82); }
+.btn-lima { background: var(--marca-claro); color: #08190F; border: 0; border-radius: 999px; padding: 10px 20px; font-weight: 700; cursor: pointer; }
+.btn-lima:hover { filter: brightness(1.06); }
+.btn-contorno { background: transparent; color: #FFFFFF; border: 1px solid rgba(255,255,255,0.45); border-radius: 999px; padding: 9px 18px; font-weight: 600; cursor: pointer; }
+.btn-contorno:hover { background: rgba(255,255,255,0.1); }
